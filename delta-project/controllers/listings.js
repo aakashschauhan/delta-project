@@ -21,20 +21,28 @@ module.exports.showListing = async (req, res) => {
 };
 
 const forwardGeocode = async (query, limit = 1) => {
-  const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=${limit}`);
+  const res = await fetch(
+    `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=${limit}`,
+    {
+      headers: {
+        "User-Agent": "wanderlust-app/1.0 (aakashschauhan282@gmail.com)" 
+      }
+    }
+  );
   const data = await res.json();
   return data;
 };
 
 module.exports.createListing = async (req, res, next) => {
   try {
+    // Debug logs (can remove later)
     console.log("🟢 req.body:", req.body);
     console.log("🟢 req.file:", req.file);
 
     const results = await forwardGeocode(req.body.listing.location, 1);
 
     if (!results || results.length === 0) {
-      req.flash("error", "Location not found");
+      req.flash("error", "Location not found.");
       return res.redirect("/listings/new");
     }
 
@@ -43,14 +51,13 @@ module.exports.createListing = async (req, res, next) => {
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
 
-    // Handle image upload only if a file was received
     if (req.file) {
       newListing.image = {
         url: req.file.path,
         filename: req.file.filename
       };
     } else {
-      console.warn("⚠️ No file received with the request");
+      console.warn("⚠️ No image file received in upload.");
     }
 
     newListing.geometry = {
@@ -60,9 +67,10 @@ module.exports.createListing = async (req, res, next) => {
 
     await newListing.save();
     req.flash("success", "New Listing Created!");
-    res.redirect("/listings");
+    res.redirect(`/listings/${newListing._id}`);
   } catch (err) {
-    console.error("🔥 ERROR IN createListing:", err); // This will now log detailed errors to Render
+    console.error("🔥 ERROR IN createListing:", err);
+    req.flash("error", "Something went wrong while creating the listing.");
     next(err);
   }
 };
