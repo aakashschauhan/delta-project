@@ -35,10 +35,6 @@ const forwardGeocode = async (query, limit = 1) => {
 
 module.exports.createListing = async (req, res, next) => {
   try {
-    // Debug logs (can remove later)
-    console.log("🟢 req.body:", req.body);
-    console.log("🟢 req.file:", req.file);
-
     const results = await forwardGeocode(req.body.listing.location, 1);
 
     if (!results || results.length === 0) {
