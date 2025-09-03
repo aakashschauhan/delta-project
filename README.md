@@ -1,103 +1,93 @@
-# 🌍 Wanderlust — Travel Listing Web App
+# 🧳 Wanderlust - Full-Stack Travel Listing App
 
-**Wanderlust** is a full-stack travel listing web application where users can discover, create, and review campgrounds or travel spots. The app features authentication, CRUD operations, image uploads, and location mapping using Mapbox.
-
-🔗 **Live Demo:** [https://delta-project-62rm.onrender.com/listings](https://delta-project-62rm.onrender.com/listings)
-
----
-
-## ✨ Features
-
-- 🧭 View all listed travel spots with title, image, price, and location
-- 🔐 User authentication (signup/login/logout)
-- ➕ Add new travel listings (with image + location)
-- 📝 Edit or delete your own listings
-- 💬 Post and delete reviews on listings
-- 🌍 Location support with interactive Mapbox maps
-- 🖼️ Image uploads using Cloudinary
-- ⚠️ Flash messages for form validation and actions
-- 🔒 Authorization for protected routes
-- 🛠️ Error handling middleware and custom error pages
+A full-stack **Travel Listing Web Application** built with **Node.js, Express, and MongoDB**.  
+It allows users to **browse, create, edit, and review travel listings** with authentication, images, and interactive maps.
 
 ---
 
-## 🛠️ Tech Stack
-
-| Technology | Purpose |
-|------------|---------|
-| **Node.js** | Server runtime |
-| **Express.js** | Web framework |
-| **MongoDB** | NoSQL database |
-| **Mongoose** | MongoDB ODM |
-| **EJS** | Server-side templating |
-| **Passport.js** | User authentication |
-| **Cloudinary** | Image hosting |
-| **Mapbox** | Geolocation + maps |
-| **Bootstrap 5** | Styling and layout |
-| **Multer** | File upload middleware |
+## 🚀 Features  
+- **CRUD operations** for creating, editing, and deleting travel listings.  
+- **User authentication & authorization** using Passport.js (secure login, sessions).  
+- **Image upload & storage** integrated with Cloudinary.  
+- **Interactive maps** powered by Mapbox API.  
+- **Flash messages & error handling** for improved user experience.  
+- Responsive **EJS-based UI** with modular routing.  
 
 ---
 
-## 📁 Folder Structure
-
-delta-project/
-├── controllers/
-├── models/
-├── routes/
-├── views/
-│ ├── listings/
-│ ├── reviews/
-│ └── partials/
-├── public/
-├── utils/
-├── app.js
-├── cloudConfig.js
-├── .env (not included)
-└── README.md
-
-yaml
-Copy
-Edit
+## 🛠️ Tech Stack  
+- **Frontend**: HTML, CSS, JavaScript, EJS  
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose  
+- **Authentication**: Passport.js, Express-Session  
+- **Storage & APIs**: Cloudinary, Mapbox API  
+- **Tools**: Git, GitHub, Render, VS Code  
 
 ---
 
-## 🚀 Getting Started
+## 📂 Project Structure  
+```
+wanderlust/
+│
+├── app.js                # Main server file
+├── models/               # Mongoose models (User, Listing, Review)
+├── routes/               # Express routes for listings, reviews, users
+├── views/                # EJS templates
+├── public/               # Static assets (CSS, JS)
+├── utils/                # Custom error handling
+├── .env                  # Environment variables (DB URL, Secrets, API keys)
+└── README.md             # Project documentation
+```
+
+---
+
+## ⚡ Setup Instructions  
+
+### 1️⃣ Clone Repository  
 ```bash
-### 1. Clone the Repository
+git clone https://github.com/aakashschauhan/wanderlust.git
+cd wanderlust
+```
 
-
-git clone https://github.com/aakashschauhan/delta-project.git
-cd delta-project
-2. Install Dependencies
-bash
-Copy
-Edit
+### 2️⃣ Install Dependencies  
+```bash
 npm install
-3. Set Up Environment Variables
-Create a .env file in the root with:
+```
 
-env
-Copy
-Edit
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_KEY=your_key
-CLOUDINARY_SECRET=your_secret
-MAPBOX_TOKEN=your_mapbox_token
-DB_URL=mongodb://localhost:27017/wanderlust
-SECRET=your_session_secret
-⚠️ Replace with your actual credentials. Don’t push .env to GitHub!
+### 3️⃣ Configure Environment Variables  
+Create a `.env` file in the root directory and add:  
+```env
+ATLASDB_URL=your_mongodb_url_here
+SECRET=your_session_secret_here
+MAPBOX_TOKEN=your_mapbox_api_key_here
+CLOUDINARY_NAME=your_cloudinary_name
+CLOUDINARY_KEY=your_cloudinary_key
+CLOUDINARY_SECRET=your_cloudinary_secret
+```
 
-4. Run the App Locally
-bash
-Copy
-Edit
+### 4️⃣ Run Locally  
+```bash
 node app.js
-Visit http://localhost:8080/listings in your browser.
+```
+Server will run on: `http://localhost:8080`  
 
+---
 
-🙋‍♂️ Author
-Aakash Singh Chauhan
-https://github.com/aakashschauhan
+## 🌍 Deployment  
+- Deployed on [Render](https://render.com).  
+- Configure environment variables in the deployment dashboard.  
+- Upload images stored via Cloudinary.  
 
-📝 License
-This project is licensed under the MIT License.
+---
+
+## 📸 Demo Screenshots  
+*(Add screenshots here after running your app)*  
+
+---
+
+## 🤝 Contributing  
+Pull requests are welcome! For major changes, open an issue first to discuss.  
+
+---
+
+## 📜 License  
+This project is open source under the [MIT License](LICENSE).  
