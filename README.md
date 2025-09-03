@@ -79,11 +79,6 @@ Server will run on: `http://localhost:8080`
 
 ---
 
-## 📸 Demo Screenshots  
-*(Add screenshots here after running your app)*  
-
----
-
 ## 🤝 Contributing  
 Pull requests are welcome! For major changes, open an issue first to discuss.  
 
